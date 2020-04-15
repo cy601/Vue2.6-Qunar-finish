@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实例</title>
+</head>
+
+<body>
+    <div id="root">
+        <div @click="handleClick">{{message}}</div>
+        <item></item>
+    </div>
+
+    <script src="/vue.js"></script>
+
+
+    <script>
+        // 每个组件都是一个vue的实例    全局组件都是
+
+
+        Vue.component('item', {
+            template: '<div>hello item </div>'
+        })
+
+        var vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    message: 'helloworld'
+                }
+            },
+            methods: {
+                handleClick: function () {
+                    alert('hello')
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

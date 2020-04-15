@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非父子组件间的传值(Bus/总线/发布订阅模式/观察者模式)</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <child content='Dell'></child>
+        <child content='Lee'></child>
+
+    </div>
+
+</body>
+<script>
+    Vue.prototype.bus = new Vue({
+
+    })
+
+    Vue.component('child', {
+        template: '<div @click="handleClick">{{selfContent}}</div>',
+        data() {
+            return {
+                //不能直接修改父组件传过来的值  需要用副本保存
+                selfContent: this.content
+            }
+        },
+        props: {
+            content: String
+        },
+        methods: {
+            handleClick: function () {
+                // alert(this.content)
+                this.bus.$emit('change', this.selfContent)
+            }
+        },
+        mounted() {
+
+            var this_ = this
+            //监听
+            this.bus.$on('change', function (msg) {
+                // alert(msg)
+                this_.selfContent = msg
+            })
+        },
+    })
+
+
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>

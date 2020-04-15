@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中CSS动画原理</title>
+    <script src="/vue.js"></script>
+    <style>
+        /* 下面起的名字是fade  所有这里以fade开头 */
+
+
+        /* .fade-enter {
+            opacity: 0;
+        } */
+
+        /* 显示的时候 */
+        /* .fade-enter-active { */
+            /* 监听opacity变化 */
+            /* transition: opacity 1s; */
+        /* } */
+/* 
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        .fade-leave-active {
+            transition: opacity 3s;
+            ;
+        } */
+
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+
+        .fade-enter-active,
+        .fade-leave-active {
+
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 要实现动画效果 需要用transition包裹 -->
+        <transition name='fade'>
+            <div v-if="show">hello world</div>
+        </transition>
+
+        <button @click='handleClick'>切换</button>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+                show: true
+            }
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            }
+        },
+    })
+</script>
+
+</html>

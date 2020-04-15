@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+</head>
+
+<body>
+    <div id="root">
+        <input type="text" name="" id="" v-model="inputValue">
+        <button v-on:click='handelBtnClick'>提交</button>
+        <ul>
+            <!-- <li>第一课的内容</li>
+            <li>第二课的内容</li> -->
+
+
+            <!-- <li v-for='item in list '>{{item}}</li> -->
+            <todo-item v-for='item in list' v-bind:content='item'>
+            </todo-item>
+
+        </ul>
+
+    </div>
+</body>
+
+
+<script src="/vue.js"></script>
+<script>
+
+
+    /*     // 全局组件
+        Vue.component('TodoItem', {
+            template: "<li>{{content}}</li>",
+            props: ['content']
+        }) */
+
+
+    // 局部组件
+    var TodoItem = {
+        template: "<li>{{content}}</li>",
+        props: ['content']
+    }
+
+
+
+    var root = new Vue({
+        el: '#root',
+        //使用局部组件 
+        components: { TodoItem: TodoItem },
+        data() {
+            return {
+                list: [
+
+                ],
+                inputValue: ''
+            }
+        },
+        methods: {
+            handelBtnClick: function () {
+
+                if (this.inputValue) {
+                    this.list.push(this.inputValue)
+
+                    this.inputValue = ''
+
+                } else {
+                    alert('can not be empty')
+                }
+            }
+        },
+    })
+</script>
+
+</html>

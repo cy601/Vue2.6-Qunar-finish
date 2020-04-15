@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按键修饰符</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 按键修饰符 -->
+        <!-- 回车 -->
+        <input type="text" @keydown.enter='handleKeyDown'>
+        <input type="text" @keydown.esc='handleKeyDown'>
+    </div>
+
+</body>
+
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            handleKeyDown: function (e) {
+                console.log(e.target.value);
+
+            }
+        },
+    })
+
+</script>
+
+</html>

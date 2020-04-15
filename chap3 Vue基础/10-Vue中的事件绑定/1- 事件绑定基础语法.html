@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中的事件处理</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <button @click='handleClick'>Button</button> -->
+        <button @click='handleClick($event,1,2,3)'>Button</button>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            // handleClick: function (e) {
+            handleClick: function (e, one, two, three) {
+                console.log(e, one, two, three);
+
+            }
+        },
+    })
+</script>
+
+</html>

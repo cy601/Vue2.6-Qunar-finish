@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在Vue中使用animate.css库</title>
+    <script src="/vue.js"></script>
+    <script src="/chap5 Vue动画/node_modules/velocity-animate/velocity.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <transition>
+            <child v-if="show"></child>
+            <child-one v-else></child-one>
+        </transition>
+
+        <button @click='handleClick'>切换</button>
+    </div>
+</body>
+<script>
+    Vue.component('child', {
+        template: `<div>child</div>`
+    })
+    Vue.component('child-one', {
+        template: `
+        <div>child-one</div>`
+    })
+    var vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+                show: true
+            }
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            },
+            handleBeforeEnter: function (el) {
+                el.style.opacity = 0;
+            },
+            handleEnter: function (el, done) {
+                Velocity(el, { opacity: 1 }, { duration: 1000, complete: done })
+            },
+            handleAfterEnter: function (el) {
+                console.log('动画结束');
+
+
+            }
+        },
+    })
+</script>
+
+</html>

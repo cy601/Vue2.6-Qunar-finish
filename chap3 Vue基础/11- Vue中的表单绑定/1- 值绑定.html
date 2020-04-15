@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="/vue.js"></script>
+
+<body>
+    <div id="root">
+        <input type="text" v-model='value'>
+        {{value}}
+
+        <br><br>
+
+
+        <textarea name="" id="" cols="30" rows="10" v-model="value"></textarea>
+        {{value}}
+        <br>
+        <br>
+
+        <input type="checkbox" v-model="value">
+        {{value}}
+
+        <br>
+        <br>
+
+        <input type="radio" value="check" v-model="value">
+        {{value }}
+        <br>
+        <br>
+
+        <select name="" id="" v-model="value">
+            <option disabled value="请选择">请选择</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+            <option value="4">D</option>
+        </select>
+        {{value}}
+    </div>
+
+</body>
+
+
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+                value: ''
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>

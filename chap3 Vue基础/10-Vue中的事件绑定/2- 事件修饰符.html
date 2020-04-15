@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="/vue.js"></script>
+
+<body>
+    <div id="app">
+        <!-- @click.prevent 防止点击submit 跳转 -->
+        <form action="/abc" @click.prevent>
+            <input type="submit" name="" id="">
+        </form>
+
+
+    </div>
+
+
+    <br><br>
+    <div id="app1">
+        nice
+        <div @click.self='handleClick'>hello world</div>
+
+        <!-- self要求，click事件只有在e.target=e.currentTarget的时候才会执行 -->
+    </div>
+
+
+    <br><br>
+    <div id="app2">
+        good
+        <div @click.once='handleClick'>hello world</div>
+        <!-- once修饰符 事件只执行一次 -->
+    </div>
+
+    <br><br>
+    <div id="app3">
+        good
+        <div @click.capture='handleClick'>
+            <div @click.caputer='handleClickInner'>hello world</div>
+        </div>
+        <!-- capture 事件捕获是从外部到内部    
+        默认是从内部到外部
+        -->
+    </div>
+
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            handleClick: function () {
+                alert('123')
+            }
+        },
+    })
+    var vm2 = new Vue({
+        el: '#app1',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            handleClick: function () {
+                alert('123')
+            }
+        },
+    })
+    var vm3 = new Vue({
+        el: '#app2',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            handleClick: function () {
+                alert('123')
+            }
+        },
+    })
+    var vm4 = new Vue({
+        el: '#app3',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            handleClick: function () {
+                alert('outer')
+            },
+            handleClickInner: function () {
+                alert('inner')
+            }
+        },
+    })
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件参数校验与非props特性</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <child content='hell'></child>
+    </div>
+
+
+</body>
+<script>
+    Vue.component('child', {
+        // props: {
+        //     content: {
+        //         type: String,
+        //         required: false,
+        //         validator: function (value) {
+        //             return (value.length > 5)
+        //         }
+        //     }
+        // },
+        template:'<div>hello</div>'
+
+    })
+    // props特性：① 父组件传，子组件一定要接，props特性不会把属性显示在DOM里面 
+    //非props特性：父组件传，子组件不接，子组件没法使用父组件传递的内容，同时会把属性显示在DOM里面 
+    
+    var vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>

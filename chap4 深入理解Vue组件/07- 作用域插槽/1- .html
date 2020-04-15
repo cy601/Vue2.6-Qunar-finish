@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <child>
+            <!-- 作用域插槽必须以template开头和结尾，同时作用域插槽接收的数据都放在props里 -->
+            <template slot-scope='props'>
+                <!-- <li>{{props.item}} --hello</li> -->
+                <h1>{{props.item}}</h1>
+            </template>
+        </child>
+    </div>
+
+</body>
+<script>
+    Vue.component('child', {
+        template: `<div>
+                    <ul>
+                        <slot v-for='item of list' :item=item></slot>
+                    </ul>
+                    </div>`,
+        data() {
+            return {
+                list: [1, 2, 3, 4]
+            }
+        },
+
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>

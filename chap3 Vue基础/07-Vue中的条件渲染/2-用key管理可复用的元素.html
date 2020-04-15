@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key</title>
+    <script src="/vue.js"></script>
+
+</head>
+<div id="app">
+    <div v-if="show">
+        <!-- 使用key值 防止vue复用text元素 -->
+        userName: <input type="text" key="username" name="" id="">
+    </div>
+    <div v-else>
+        E-mail: <input type="text" key="password" name="" id="">
+    </div>
+</div>
+
+<body>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data() {
+            return {
+                show: false
+
+            }
+        },
+    })
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父子组件传值</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 父组件 -->
+        <counter :count='1'></counter>
+        <counter :count='2'></counter>
+    </div>
+</body>
+
+<script>
+
+    // 父组件向子组件传值，子组件不能直接修改，而是要复制一个副本， 更改副本
+
+
+    // 子组件
+    var counter = {
+        props: ['count'],
+        data: function () {
+            return {
+                number: this.count
+            }
+        },
+        template: '<div @click="handleClick"> {{number}} </div>',
+        methods: {
+            handleClick: function () {
+                this.number++
+            }
+        },
+    }
+
+    var vm = new Vue({
+        el: '#app',
+        components: {
+
+            counter
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件使用中的细节点</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <table>
+            <tbody>
+                <tr is="row"></tr>
+                <tr is="row"></tr>
+                <tr is="row"></tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</body>
+<script>
+    // 在子组件里面定义data的时候，data必须是一个函数，而不是一个对象
+    Vue.component('row', {
+        data() {
+            return {
+                content: 'this is a row'
+            }
+        },
+        template: '<tr><td>{{content}}</td></tr>'
+    })
+
+    var vm = new Vue({
+        el: '#root'
+    })
+</script>
+
+</html>

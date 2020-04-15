@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在Vue中使用插槽（slot）</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <child content="<p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p>"></child>
+    </div>
+
+</body>
+<script>
+    Vue.component('child', {
+        template: `<div>
+                        <p>hello</p>
+                        <div v-html='this.content'>{{content}}</div>
+                    </div>`,
+        props: ['content']
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>

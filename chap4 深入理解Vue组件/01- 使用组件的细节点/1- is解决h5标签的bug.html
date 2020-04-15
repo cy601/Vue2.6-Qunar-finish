@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件使用中的细节点</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <table>
+            <tbody>
+                <tr is="row"></tr>
+                <tr is="row"></tr>
+                <tr is="row"></tr>
+            </tbody>
+        </table>
+
+        <!-- <table>
+            <select name="" id="">
+                <option value="" is="row"></option>
+            </select>
+        </table> -->
+    </div>
+</body>
+<script>
+    Vue.component('row', {
+        template: '<tr><td>this is a row </td></tr>'
+    })
+
+    var vm = new Vue({
+        el: '#root'
+    })
+</script>
+
+</html>

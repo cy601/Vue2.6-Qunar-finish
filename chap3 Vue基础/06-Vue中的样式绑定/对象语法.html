@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+样式绑定有两种方式
+1、通过样式进行绑定
+2、通过数组进行绑定 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中的样式绑定</title>
+    <script src="/vue.js"></script>
+    <style>
+        .activated {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- class对象绑定 -->
+        <div @click='handleDivClick' :class='{activated:isActivated}'>Hello World</div>
+        <!-- <div @click='handleDivClick' :class='[activated,activatedOne]'>Hello World</div> -->
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data() {
+            return {
+                activated: '',
+                isActivated: false,
+                activatedOne: 'acitvated-one'
+            }
+        },
+        methods: {
+            handleDivClick: function () {
+                this.isActivated = !this.isActivated
+                /*   if (this.activated === 'activated') {
+                      this.activated = ''
+                  } else {
+                      this.activated = 'activated'
+                  } */
+
+                // 三元表达式
+                // this.activated = this.activated === 'activated' ? '' : "activated"
+            }
+        },
+    })
+</script>
+
+</html>

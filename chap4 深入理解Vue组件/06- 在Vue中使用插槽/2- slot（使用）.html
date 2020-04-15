@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在Vue中使用插槽（slot）</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <child>
+            <!-- 组件里写什么，slot里面就渲染什么 -->
+            <p>Dell</p>
+            <h1>Hello</h1>
+        </child>
+    </div>
+
+</body>
+<script>
+    Vue.component('child', {
+        template: `<div>
+                    <p>hello</p>
+                    <slot>默认内容，不传递数据时候显示</slot>
+                    </div>`,
+
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>

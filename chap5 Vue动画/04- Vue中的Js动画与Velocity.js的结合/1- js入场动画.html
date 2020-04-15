@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在Vue中使用animate.css库</title>
+    <script src="/vue.js"></script>
+    <!-- 引入animate.css -->
+    <!-- <link rel="stylesheet" href="/chap5 Vue动画/node_modules/animate.css/animate.css"> -->
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <transition name='fade' @before-enter='handleBeforeEnter' @enter='handleEnter' @after-enter='handleAfterEnter'>
+            <div v-show="show">hello world</div>
+        </transition>
+
+        <button @click='handleClick'>切换</button>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+                show: true
+            }
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            },
+            handleBeforeEnter: function (el) {
+                el.style.color = 'red'
+            },
+            handleEnter: function (el, done) {
+                setTimeout(() => {
+                    el.style.color = 'green'
+
+                }, 2000);
+                setTimeout(() => {
+                    //告诉Vue 动画执行完了
+                    done()
+                }, 4000);
+            },
+            handleAfterEnter: function (el) {
+                el.style.color = '#000'
+            }
+        },
+    })
+</script>
+
+</html>
